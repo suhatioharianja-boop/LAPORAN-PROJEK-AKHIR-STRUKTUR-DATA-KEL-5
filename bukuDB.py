@@ -4,7 +4,6 @@ from buku import Buku
 
 PATH = "database\\books.db"
 
-# Membuat folder database otomatis jika belum ada
 folder_db = os.path.dirname(PATH)
 if folder_db and not os.path.exists(folder_db):
     os.makedirs(folder_db)
@@ -15,7 +14,7 @@ def muat_database():
     with shelve.open(PATH) as db:
         for judul in db:
             data_mentah = db[judul]
-            # Membuat objek Buku utuh dari data yang tersimpan
+            
             theBuku = Buku(
                 judul=data_mentah['judul'],
                 penulis=data_mentah['penulis'],
